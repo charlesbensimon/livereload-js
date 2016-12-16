@@ -749,7 +749,7 @@
     };
 
     Reloader.prototype.reload = function(path, options) {
-      var plugin, sassLink_base, _i, _len, _ref;
+      var plugin, sassLink, _base, _i, _len, _ref;
       this.options = options;
       if ((_base = this.options).stylesheetReloadTimeout == null) {
         _base.stylesheetReloadTimeout = 15000;
