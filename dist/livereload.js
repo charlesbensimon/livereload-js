@@ -749,7 +749,7 @@
     };
 
     Reloader.prototype.reload = function(path, options) {
-      var plugin, _base, _i, _len, _ref;
+      var plugin, sassLink_base, _i, _len, _ref;
       this.options = options;
       if ((_base = this.options).stylesheetReloadTimeout == null) {
         _base.stylesheetReloadTimeout = 15000;
@@ -766,6 +766,12 @@
           if (this.reloadStylesheet(path)) {
             return;
           }
+        }
+        if (path.match(/\.scss$/i)) {
+          sassLink = this.document.querySelector('[livereloadSass]');
+          if (sassLink)
+            this.reattachStylesheetLink(sassLink)
+          return
         }
       }
       if (options.liveImg) {
