@@ -84,6 +84,10 @@ exports.Reloader = class Reloader
     if options.liveCSS
       if path.match(/\.css$/i)
         return if @reloadStylesheet(path)
+      if path.match(/\.scss$/i)
+        SassLink = @document.querySelector('[livereloadSass]')
+        @reattachStylesheetLink(SassLink) if SassLink
+        return
     if options.liveImg
       if path.match(/\.(jpe?g|png|gif)$/i)
         @reloadImages(path)
